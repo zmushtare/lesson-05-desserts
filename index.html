@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Single+Day&display=swap" rel="stylesheet">
+    <title>Desserts</title>
+  </head>
+  <body>
+    <div class="main"> 
+      <h1 class="title-text">Desserts</h1>
+      <div w3-include-html="text.txt"></div>
+      <div class="container">
+        <div class="category" id="category1">
+          <p>Icecream</p>
+          <p>
+            <input type="submit" value="Vanilla" id="vanilla">
+          </p>
+          <p>
+            <input type="submit" value="Chocolate" id="chocolate">
+          </p>
+          <p>
+            <input type="submit" value="Strawberry" id="strawberry">
+          </p>
+        </div>
+        <div class="category" id="category2">
+            <p>Waffles</p>
+            <p>
+              <input type="submit" value="Plain" id="plain">
+            </p>
+            <p>
+              <input type="submit" value="Sugar" id="chocolate">
+            </p>
+            <p>
+              <input type="submit" value="Syrup" id="strawberry">
+            </p>
+          </div>
+          <div class="category" id="category3">
+            <p>Etc</p>
+            <p>
+              <input type="submit" value="Fruit" id="vanilla">
+            </p>
+            <p>
+              <input type="submit" value="Coffee" id="chocolate">
+            </p>
+            <p>
+              <input type="submit" value="Tea" id="strawberry">
+            </p>
+          </div>
+      </div>
+    </div>
+    <iframe class="info" src="text.txt"></iframe>
+    <script>
+        $("input").each(function(index, element) {
+            $(element).attr("id", $(element).val().toLowerCase());
+        })
+      $("input").click(changeIframe);
+
+      function changeIframe(event) {
+        var category = event.currentTarget.parentElement.parentElement.id;
+        var nameOfFood = event.currentTarget.id;
+        category = "category_0" + category.split("category")[1];
+        $("iframe").attr("src", `${category}/${nameOfFood}/${nameOfFood}.txt`);
+      }
+    </script>
+  </body>
+</html>
